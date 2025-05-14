@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["@chakra-ui/react"],
   },
+  images: {
+    remotePatterns: [new URL('https://rickandmortyapi.com/api/character/avatar/*.jpeg')],
+  },
 };
 
 export default nextConfig;
