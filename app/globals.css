@@ -31,8 +31,9 @@ body {
 a {
   color: var(--foreground);
   outline: none;
-
+  text-decoration: none;
 }
+
 
 .fade-in {
   opacity: 0;

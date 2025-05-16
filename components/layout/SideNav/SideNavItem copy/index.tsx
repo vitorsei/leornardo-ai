@@ -1,14 +1,21 @@
 "use client";
 
-import { Box } from "@chakra-ui/react";
+import { Box, Link as ChakraLink, Flex, Icon, Text } from "@chakra-ui/react";
+import NextLink from "next/link";
+import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
-  selected: boolean;
+  icon: ReactNode;
+  text: string;
+  href: string;
 }
 
-export default function SideNavItem({ selected, children }: Props) {
+export default function SideNavItem({ icon, text, href, children }: Props) {
+  const pathname = usePathname();
+  const selected = pathname === href;
+
   return (
     <Box as="li" w="full">
       <Box

@@ -3,6 +3,7 @@ import CharactersList from "@/components/CharactersList";
 import { getClient } from "@/lib/apollo-client";
 import { GET_CHARACTERS } from "@/lib/queries";
 import { Center, Container, Heading, Spinner } from "@chakra-ui/react";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 interface Props {
@@ -18,7 +19,7 @@ async function getCharacters(page: number) {
     variables: { page },
     context: {
       fetchOptions: {
-        next: { revalidate: 3600 }, // Move revalidation to fetch level
+        next: { revalidate: 3600 },
       },
     },
   });
@@ -29,7 +30,10 @@ export default async function CharactersPage(props: Props) {
   const searchParams = await props.searchParams;
   const page = Number(searchParams?.page || 1);
   const data = await getCharacters(page);
-  console.log("🚀 Vitor  ~ CharactersPage ~ data:", data);
+
+  if (!data?.characters?.results) {
+    notFound();
+  }
 
   return (
     <AuthWrapper>
@@ -45,7 +49,11 @@ export default async function CharactersPage(props: Props) {
             </Center>
           }
         >
-          <CharactersList characters={data?.characters?.results} />
+          <CharactersList
+            characters={data?.characters?.results}
+            info={data?.characters?.info}
+            initialPage={page}
+          />
         </Suspense>
       </Container>
     </AuthWrapper>

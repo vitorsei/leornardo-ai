@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Flex, VStack } from "@chakra-ui/react";
 import { FaRegImages } from "react-icons/fa";
 import { FiSmartphone } from "react-icons/fi";
@@ -5,12 +7,16 @@ import Logo from "../Logo";
 import User from "../../User";
 import SideNavItem from "./SideNavItem";
 import Divider from "../Divider";
+import SideNavLink from "./SideNavLink";
+import { usePathname } from "next/navigation";
 
 interface Props {
   showLogo?: boolean;
 }
 
 export default function SideNav({ showLogo = true }: Props) {
+  const pathname = usePathname();
+
   return (
     <Box
       as="aside"
@@ -28,16 +34,23 @@ export default function SideNav({ showLogo = true }: Props) {
           )}
 
           <Divider />
-          <Box as="li" pt={2} pb={4} pl={4} width={56}>
+          <SideNavItem selected={pathname === "/verify"}>
             <User />
-          </Box>
-
-          <SideNavItem
-            icon={<FaRegImages />}
-            text="Characters"
-            href="/characters"
-          />
-          <SideNavItem icon={<FiSmartphone />} text="Contact" href="/contact" />
+          </SideNavItem>
+          <SideNavItem selected={pathname === "/characters"}>
+            <SideNavLink
+              icon={<FaRegImages />}
+              text="Characters"
+              href="/characters"
+            />
+          </SideNavItem>
+          <SideNavItem selected={pathname === "/contact"}>
+            <SideNavLink
+              icon={<FiSmartphone />}
+              text="Contact"
+              href="/contact"
+            />
+          </SideNavItem>
         </VStack>
       </Box>
     </Box>
