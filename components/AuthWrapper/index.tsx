@@ -14,7 +14,7 @@ export default async function AuthWrapper({ children }: Props) {
   const userInfo = await getServerUserInfo();
 
   if (!userInfo || !userInfo.username || !userInfo.jobTitle) {
-    redirect("/verify");
+    redirect("/user");
   }
 
   return <div>{children}</div>;

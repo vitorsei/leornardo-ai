@@ -34,7 +34,7 @@ export default function SideNav({ showLogo = true }: Props) {
           )}
 
           <Divider />
-          <SideNavItem selected={pathname === "/verify"}>
+          <SideNavItem selected={pathname === "/user"}>
             <User />
           </SideNavItem>
           <SideNavItem selected={pathname === "/characters"}>

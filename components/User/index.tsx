@@ -10,7 +10,7 @@ export default function User() {
   }
 
   return (
-    <Link href="/verify">
+    <Link href="/user">
       <HStack>
         <Flex
           bg="secondary.600"

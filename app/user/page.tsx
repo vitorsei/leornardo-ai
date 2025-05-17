@@ -13,12 +13,13 @@ import {
 } from "@chakra-ui/react";
 import { useUser } from "@/context/UserContext";
 
-export default function Verify() {
-  const { setUser } = useUser();
+export default function UserPage() {
+  const { setUser, user } = useUser();
   const router = useRouter();
 
-  const [username, setUsername] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
+  const [username, setUsername] = useState(user?.username || "");
+  const [editMode] = useState(user?.username && user?.jobTitle);
+  const [jobTitle, setJobTitle] = useState(user?.jobTitle || "");
   const [errors, setErrors] = useState({ username: "", jobTitle: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -68,7 +69,7 @@ export default function Verify() {
       >
         <Box textAlign="center" mb={6}>
           <Heading as="h2" size="lg" mb={2} color="whiteAlpha.900">
-            Get Started
+            {editMode ? "Edit Your Details" : " Get Started"}
           </Heading>
           <Text color="whiteAlpha.700">
             Enter your details to explore the multiverse
@@ -130,8 +131,9 @@ export default function Verify() {
               _hover={{ filter: "brightness(0.9)" }}
               _active={{ filter: "brightness(0.8)" }}
               mt={2}
+              loading={isSubmitting}
             >
-              {isSubmitting ? "Verifying..." : "Verify"}
+              Submit
             </Button>
           </Stack>
         </form>
