@@ -16,13 +16,17 @@ import Logo from "@/components/layout/Logo";
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
 
+  const handleOnOpen = (e: { open: boolean }) => {
+    setOpen(e.open);
+  };
+
+  const handleOnClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Box as="nav" w="full" bg="primary.300" p="4">
-      <Drawer.Root
-        open={open}
-        onOpenChange={(e) => setOpen(e.open)}
-        placement="start"
-      >
+      <Drawer.Root open={open} onOpenChange={handleOnOpen} placement="start">
         <Flex w="full" justify="space-between" alignItems="center">
           <Logo />
           <Drawer.Trigger asChild>
@@ -45,7 +49,7 @@ export default function MobileNav() {
                 </Drawer.Title>
               </Drawer.Header>
               <Drawer.Body p={0}>
-                <SideNav showLogo={false} />
+                <SideNav showLogo={false} onClose={handleOnClose} />
               </Drawer.Body>
               <Drawer.CloseTrigger asChild top={6}>
                 <CloseButton

@@ -2,9 +2,13 @@ import { Box } from "@chakra-ui/react";
 import Image from "next/image";
 import NextLink from "next/link";
 
-export default function Logo() {
+interface Props {
+  onClick?: () => void;
+}
+
+export default function Logo({ onClick }: Props) {
   return (
-    <Box w={{ base: 120, md: 200 }}>
+    <Box w={{ base: 120, md: 200 }} onClick={onClick}>
       <NextLink href="/">
         <Image
           src="/logo.svg"

@@ -10,7 +10,7 @@ export default function ContactPage() {
           Contact Me
         </Heading>
 
-        <Text fontSize="md" color="secondary.500">
+        <Text fontSize="xl" color="whiteAlpha.700" mb="6">
           If you’d like to connect or raise any issues, feel free to reach out.
         </Text>
 

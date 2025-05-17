@@ -11,7 +11,7 @@ export default function User() {
 
   return (
     <Link href="/user">
-      <HStack>
+      <HStack gap={4}>
         <Flex
           bg="secondary.600"
           borderRadius="50%"

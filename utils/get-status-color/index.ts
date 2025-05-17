@@ -1,5 +1,3 @@
-
-
 export const getStatusColor = (status?: string) => {
     if (!status) {
         return "tertiary.300";

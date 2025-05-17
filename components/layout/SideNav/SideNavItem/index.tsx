@@ -6,11 +6,12 @@ import { ReactNode } from "react";
 interface Props {
   children: ReactNode;
   selected: boolean;
+  onClick?: () => void;
 }
 
-export default function SideNavItem({ selected, children }: Props) {
+export default function SideNavItem({ selected, children, onClick }: Props) {
   return (
-    <Box as="li" w="full">
+    <Box as="li" w="full" onClick={onClick}>
       <Box
         cursor="pointer"
         bg={selected ? "secondary.200" : "none"}

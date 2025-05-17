@@ -38,7 +38,6 @@ export default function UserProvider({ children }: { children: ReactNode }) {
 
   const handleSetUser = async (newUser: User) => {
     setUser(newUser);
-    // Store user using server action
     await setUserCookie(JSON.stringify(newUser));
   };
 

@@ -12,9 +12,10 @@ import { usePathname } from "next/navigation";
 
 interface Props {
   showLogo?: boolean;
+  onClose?: () => void;
 }
 
-export default function SideNav({ showLogo = true }: Props) {
+export default function SideNav({ showLogo = true, onClose }: Props) {
   const pathname = usePathname();
 
   return (
@@ -29,22 +30,22 @@ export default function SideNav({ showLogo = true }: Props) {
         <VStack as="ul" align="start">
           {showLogo && (
             <Flex as="li" justify="center" py={6} px={10} w="full">
-              <Logo />
+              <Logo onClick={onClose} />
             </Flex>
           )}
 
           <Divider />
-          <SideNavItem selected={pathname === "/user"}>
+          <SideNavItem selected={pathname === "/user"} onClick={onClose}>
             <User />
           </SideNavItem>
-          <SideNavItem selected={pathname === "/characters"}>
+          <SideNavItem selected={pathname === "/characters"} onClick={onClose}>
             <SideNavLink
               icon={<FaRegImages />}
               text="Characters"
               href="/characters"
             />
           </SideNavItem>
-          <SideNavItem selected={pathname === "/contact"}>
+          <SideNavItem selected={pathname === "/contact"} onClick={onClose}>
             <SideNavLink
               icon={<FiSmartphone />}
               text="Contact"

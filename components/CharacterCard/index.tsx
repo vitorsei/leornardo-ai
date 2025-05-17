@@ -66,7 +66,7 @@ export default function CharacterCard({ character }: CharacterCardProps) {
         </Badge>
 
         <Heading
-          as="h3"
+          as="h2"
           size="md"
           mb={3}
           color="white"

@@ -18,13 +18,14 @@ export default function SideNavLink({ icon, text, href }: Props) {
       colorScheme="teal"
       textDecoration="none"
       py={2}
-      pl={4}
       pr={10}
       w="full"
     >
-      <Flex alignItems="center" gap={2}>
-        <Icon>{icon}</Icon>
-        <Text as="span">{text}</Text>
+      <Flex alignItems="center" gap={4}>
+        <Icon size="lg">{icon}</Icon>
+        <Text as="span" fontSize="lg">
+          {text}
+        </Text>
       </Flex>
     </ChakraLink>
   );

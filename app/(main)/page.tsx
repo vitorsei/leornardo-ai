@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <Container
       maxW="container.xl"
-      py={8}
+      py={12}
       px={8}
       display="flex"
       flexDirection="column"
@@ -25,8 +25,8 @@ export default function Home() {
       </Text>
       <Button
         as="a"
+        // @ts-expect-error: Chakra UI Button doesn't accept href when using as="a"
         href="/characters"
-        width="25%"
         size="lg"
         bg="secondary.600"
         borderRadius="30px"
