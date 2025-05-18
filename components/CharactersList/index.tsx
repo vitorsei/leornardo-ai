@@ -61,7 +61,11 @@ export default function CharactersList({
       </SimpleGrid>
 
       <Box position="sticky" bottom={0} p={4} mt={8}>
-        <HStack justify="space-between" align="center">
+        <HStack
+          align="center"
+          justify={{ base: "space-between", md: "center" }}
+          gap={{ base: 0, md: 20 }}
+        >
           <Button
             onClick={handlePrevPage}
             bg="secondary.600"
@@ -73,7 +77,7 @@ export default function CharactersList({
             Previous
           </Button>
 
-          <Box textAlign="center">
+          <Box textAlign="center" flexShrink={0}>
             <Text fontSize={{ base: "sm", md: "md" }} color="gray.300">
               Page {currentPage} of {info?.pages}
             </Text>

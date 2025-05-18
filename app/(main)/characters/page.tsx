@@ -1,4 +1,3 @@
-import AuthWrapper from "@/components/AuthWrapper";
 import CharactersList from "@/components/CharactersList";
 import { getClient } from "@/lib/apollo-client";
 import { GET_CHARACTERS } from "@/lib/queries";
@@ -36,26 +35,24 @@ export default async function CharactersPage(props: Props) {
   }
 
   return (
-    <AuthWrapper>
-      <Container py={10} w="full">
-        <Heading as="h1" size="xl" mb={6} color="whiteAlpha.900">
-          Characters
-        </Heading>
+    <Container py={10} w="full">
+      <Heading as="h1" size="xl" mb={6} color="whiteAlpha.900">
+        Characters
+      </Heading>
 
-        <Suspense
-          fallback={
-            <Center py={10}>
-              <Spinner size="xl" color="brand.500" />
-            </Center>
-          }
-        >
-          <CharactersList
-            characters={data?.characters?.results}
-            info={data?.characters?.info}
-            initialPage={page}
-          />
-        </Suspense>
-      </Container>
-    </AuthWrapper>
+      <Suspense
+        fallback={
+          <Center py={10}>
+            <Spinner size="xl" color="brand.500" />
+          </Center>
+        }
+      >
+        <CharactersList
+          characters={data?.characters?.results}
+          info={data?.characters?.info}
+          initialPage={page}
+        />
+      </Suspense>
+    </Container>
   );
 }
